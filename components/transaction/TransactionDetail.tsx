@@ -1,51 +1,50 @@
-import React from "react";
-import { FaLongArrowAltRight } from "react-icons/fa";
+'use client'
+import { useState } from "react";
+import Input from "../shared/Input";
+import Button from "../shared/Button";
+import { status, transactionType } from "@/lib/data";
 
 export default function TransactionDetail() {
-  const style = {
-    value: "font-medium md:font-semibold md:text-base text-[15px]",
-    property: "text-gray-400 text-sm",
-  };
+
+
+  const [transaction, setTransaction] = useState({
+    date: "",
+    description: "",
+    category: "",
+    type: "",
+    amount: "",
+    status: "",
+  })
+  const onChange = (e: any) => {
+    const { name, value } = e.target
+    setTransaction({ ...transaction, [name]: value })
+  }
+
+
+  const submit = () => {
+
+  }
+
   return (
-    <div className="text-white">
-      <div className="flex flex-col justify-between items-center gap-3 md:gap-5 font-semibold">
-        <div className="h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 rounded-full border-2"></div>
-        <p className="text-[15px] md:text-xl ">Anne Mayers Paige</p>
-      </div>
-      <div className="mt-7 space-y-5">
-        <div className="space-y-1">
-          <p className={style.property}>Transaction ID</p>
-          <p className={`${style.value}`}>343466364DTE</p>
+    <div className="flex flex-col justify-between h-full">
+      <div className="">
+        <div className="flex mb-8 justify-between items-center">
+          <div className="flex gap-3 items-center">
+            <div className="h-24 w-24 rounded-full border-2"></div>
+            <p className="text-xl font-bold text-white">Ann Mayers Paige</p>
+          </div>
         </div>
-        <div className="space-y-1">
-          <p className={style.property}>Amount</p>
-          <p className={`${style.value}`}>$25,825.00</p>
-        </div>
-        <div className="space-y-1">
-          <p className={style.property}>Date</p>
-          <p className={style.value}>20-04-2024</p>
-        </div>
-        <div className="space-y-1">
-          <p className={style.property}>Type</p>
-          <p className={style.value}>Debit</p>
-        </div>
-        <div className="space-y-1">
-          <p className={style.property}>Description</p>
-          <p className={style.value}>Grocery Store</p>
-        </div>
-        <div className="space-y-1">
-          <p className={style.property}>Category</p>
-          <p className={style.value}>Shopping</p>
-        </div>
-        <div className="space-y-1">
-          <p className={style.property}>Status</p>
-          <p className={` ${style.value} text-amber-500`}>Pending</p>
+        <div className="grid grid-cols-3 gap-7">
+          <Input value={transaction.description} name="description" label="Description" style="rounded-lg" onChange={onChange} />
+          <Input value={transaction.date} name="date" label="Date" style="rounded-lg" onChange={onChange} />
+          <Input value={transaction.category} name="category" label="Category" style="rounded-lg" onChange={onChange} />
+          <Input value={transaction.amount} name="amount" label="Amount" style="rounded-lg" onChange={onChange} />
+          <Input value={transaction.type} select={true} data={transactionType} name="type" label="Transaction Type" style="rounded-lg" onChange={onChange} />
+          <Input value={transaction.status} select={true} data={status} name="status" label="Status" style="rounded-lg" onChange={onChange} />
         </div>
       </div>
-      <div className="grid mt-5 place-content-center">
-        <button className="px-12 shadow-md duration-300 font-semibold active:scale-105 py-3 rounded-lg bg-lime-500">
-          Edit
-        </button>
+      <div className="p-5 flex justify-end">
+        <Button title="Submit" style="text-white w-fit bg-emerald-500" />
       </div>
     </div>
   );

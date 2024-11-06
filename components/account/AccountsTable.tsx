@@ -2,12 +2,17 @@
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";
 import { tableData } from './data'
+import { TAccount } from "./type";
+import { useAppDispatch } from "@/redux/store/hooks";
+import { setUserDetails } from "@/redux/slices/user";
+import { openBackdrop } from "@/redux/slices/backdrop";
+import { openModal } from "@/redux/slices/modal";
 type Props = {
-    setOpened: Dispatch<SetStateAction<boolean>>
-    setData: any
+    accounts: TAccount[]
 }
 
-export default function AccountsTable({ setData, setOpened }: Props) {
+export default function AccountsTable({ accounts }: Props) {
+    const dispatch = useAppDispatch()
     return (
         <div className="overflow-x-auto">
             <table className="w-full min-w-[1000px] rounded-md bg-black/20 text-white text-sm">
@@ -24,25 +29,26 @@ export default function AccountsTable({ setData, setOpened }: Props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {tableData.map((row, key) => (
+                    {accounts?.map((account, key) => (
                         <motion.tr
                             initial={{ scaleX: 0 }}
                             animate={{ scaleX: 1 }}
                             transition={{ duration: 0.5, delay: key * 0.05 }}
                             onClick={() => {
-                                setData(row)
-                                setOpened(true)
+                                dispatch(setUserDetails(account))
+                                dispatch(openBackdrop())
+                                dispatch(openModal('account'))
                             }}
-                            className={`from-transparent to-black ${key !== tableData.length - 1 && 'border-b-2 border-gray-900'} bg-gradient-to-br hover:from-[#15154a] hover:to-black hover:via-[#0101b4] duration-500 cursor-pointer`} key={key}>
+                            className={`from-transparent to-black ${key !== accounts.length - 1 && 'border-b-2 border-gray-900'} bg-gradient-to-br hover:from-[#15154a] hover:to-black hover:via-[#0101b4] duration-500 cursor-pointer`} key={key}>
                             <td className="px-4 py-3 flex items-center gap-2">
                                 <span className="h-12 w-12 shrink-0 inline-block align-middle rounded-full border-2"></span>
-                                <span className="inline-block font-semibold">{row.fullName}</span>
+                                <span className="inline-block font-semibold">{account.firstName} {account.middleName} {account.lastName}</span>
                             </td>
-                            <td className="px-4 py-3">{row.email}</td>
-                            <td className="px-4 py-3">{row.phoneNumber}</td>
-                            <td className="px-4 py-3">{row.accountNumber}</td>
-                            <td className="px-4 py-3">{row.balance}</td>
-                            <td className={`px-4 py-3 ${row.status === 'Pending' && 'text-amber-500'} ${row.status === 'Verified' && 'text-green-500'}  ${row.status === 'Failed' && 'text-red-500'}`}>{row.status}</td>
+                            <td className="px-4 py-3">{account.email}</td>
+                            <td className="px-4 py-3">{account.phone}</td>
+                            <td className="px-4 py-3">{account.accountNumber}</td>
+                            <td className="px-4 py-3">{account.currentBalance}</td>
+                            <td className={`px-4 capitalize py-3 ${account.status === 'pending' && 'text-amber-500'} ${account.status === 'successful' && 'text-green-500'}  ${account.status === 'failed' && 'text-red-500'}`}>{account.status}</td>
                         </motion.tr>
                     ))}
                 </tbody>

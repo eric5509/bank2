@@ -1,22 +1,17 @@
-"use client";
-import Backdrop from "@/components/account/Backdrop";
+import Backdrop from "@/components/account/AccountModal";
 import UserTable from "@/components/account/AccountsTable";
-import BackdropParent from "@/components/shared/BackdropParent";
+import BackdropParent from "@/components/shared/Backdrop";
 import Framer from "@/lib/Framer";
-import { useState } from "react";
-import { Plus, Search } from "lucide-react";
 import AccountTitle from "@/components/account/AccountTitle";
 
-export default function AccountsPage() {
-  const [data, setData] = useState({});
-  const [opened, setOpened] = useState(false);
+export default async function AccountsPage() {
+  const data = await fetch('http://localhost:5000/accounts')
+  const response = await data.json()
+  const results = response.data
   return (
     <Framer>
         <AccountTitle />
-        <UserTable setOpened={setOpened} setData={setData} />
-        <BackdropParent setOpened={setOpened} opened={opened}>
-          <Backdrop opened={opened} data={data} />
-        </BackdropParent>
+        <UserTable accounts={results}/>
     </Framer>
   );
 }

@@ -3,17 +3,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { BsChevronRight } from "react-icons/bs"
+import { TLink} from './type'
 
-type Props = {
-    title: string
-    link: string
-    icon: any
-    data?: {
-        title: string
-        link: string
-    }[]
-}
-export default function NavCard({ icon, title, link, data }: Props) {
+
+export default function NavCard({ icon, title, link, data }: TLink) {
     const [open, setOpen] = useState(false)
     const pathname = usePathname()
     return (

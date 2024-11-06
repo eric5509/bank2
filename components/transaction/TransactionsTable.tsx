@@ -21,11 +21,13 @@ export default function TransactionsTable({ one }: Props) {
               </th>
             )}
             <th className="px-4 py-5 font-medium text-start ">
+              Account Number 
+            </th>
+            <th className="px-4 py-5 font-medium text-start ">
               Transaction ID
             </th>
             <th className="px-4 py-5 font-medium text-start ">Date</th>
             <th className="px-4 py-5 font-medium text-start ">Description</th>
-            <th className="px-4 py-5 font-medium text-start ">Category</th>
             <th className="px-4 py-5 font-medium text-start ">Type</th>
             <th className="px-4 py-5 font-medium text-start ">Amount</th>
             <th className="px-4 py-5 font-medium text-start ">Status</th>
@@ -54,10 +56,10 @@ export default function TransactionsTable({ one }: Props) {
                     </span>
                   </td>
                 )}
+                <td className="px-4 py-3">{row.accountNumber}</td>
                 <td className="px-4 py-3">{row.transactionId}</td>
                 <td className="px-4 py-3">{row.date}</td>
                 <td className="px-4 py-3">{row.description}</td>
-                <td className="px-4 py-3">{row.category}</td>
                 <td className="px-4 py-3">{row.type}</td>
                 <td className="px-4 py-3">{row.amount}</td>
                 <td

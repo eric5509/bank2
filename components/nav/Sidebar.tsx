@@ -5,12 +5,14 @@ import { IoHome } from "react-icons/io5";
 import { GrTransaction } from "react-icons/gr";
 import { TbTransferVertical } from "react-icons/tb";
 import { CgCreditCard } from "react-icons/cg";
-import { GiTakeMyMoney } from "react-icons/gi";
-import { FcStumbleupon } from "react-icons/fc";
 import { FcBiohazard } from "react-icons/fc";
+import { FaRegMessage } from "react-icons/fa6";
+import { RiPassValidLine } from "react-icons/ri";
+import { PiMoneyWavy } from "react-icons/pi";
+import { TLink } from "./type";
 
 export default function Sidebar() {
-  const links = [
+  const links: TLink[] = [
     {
       title: "Home",
       link: "",
@@ -39,17 +41,17 @@ export default function Sidebar() {
     {
       title: "Loans",
       link: "loans",
-      icon: <GiTakeMyMoney size={18} />,
+      icon: <PiMoneyWavy size={18} />,
     },
     {
       title: "Message",
       link: "message",
-      icon: <GiTakeMyMoney size={18} />,
+      icon: <FaRegMessage size={18} />,
     },
     {
       title: "KYC",
       link: "kyc",
-      icon: <GiTakeMyMoney size={18} />,
+      icon: <RiPassValidLine size={18} />,
     },
   ];
   

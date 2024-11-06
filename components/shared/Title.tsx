@@ -5,6 +5,6 @@ type Props = {
 
 export default function Title({ title, style }: Props) {
     return (
-        <p className={`text-2xl font-semibold text-white ${style} p-5`}>{title}</p>
+        <p className={`text-2xl font-semibold text-white ${style} py-5`}>{title}</p>
     )
 }

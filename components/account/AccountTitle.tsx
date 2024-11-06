@@ -20,13 +20,11 @@ export default function AccountTitle() {
               />
             </div>
           </div>
-          <div className="px-5 cursor-pointer duration-300 hover:scale-105 active:scale-100 font-semibold text-sm bg-green-500 py-3 rounded-md h-fit">
-            <p>
-              {" "}
-              <Plus size={15} strokeWidth={5} className="inline text-xs" />{" "}
-              Create Account
-            </p>
-          </div>
+          <p className="px-5 cursor-pointer duration-300 hover:scale-105 active:scale-100 font-semibold text-sm bg-green-500 py-3 rounded-md h-fit">
+            {" "}
+            <Plus size={15} strokeWidth={5} className="inline text-xs" />{" "}
+            Create Account
+          </p>
           <p className="text-sm cursor-pointer duration-300 h-fit hover:scale-105 active:scale-100 font-semibold py-3 px-5 bg-amber-500 rounded-lg shadow-md">
             Pending Accounts
           </p>

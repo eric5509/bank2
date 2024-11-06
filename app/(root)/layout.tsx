@@ -1,4 +1,6 @@
+import AccountModal from "@/components/account/AccountModal"
 import Sidebar from "@/components/nav/Sidebar"
+import Backdrop from "@/components/shared/Backdrop"
 
 type Props = {
     children: React.ReactNode
@@ -14,6 +16,9 @@ export default function layout({ children }: Props) {
                     {children}
                 </div>
             </div>
+            <Backdrop>
+                <AccountModal />
+            </Backdrop>
         </div>
     )
 }
