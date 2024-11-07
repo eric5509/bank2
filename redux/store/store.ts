@@ -2,12 +2,18 @@ import { configureStore } from '@reduxjs/toolkit'
 import { UserDetailsSlice } from '../slices/user'
 import { ModalSlice } from '../slices/modal'
 import { BackDropSlice } from '../slices/backdrop'
+import { TransactionSlice } from '../slices/transaction'
+import { AccountSlice } from '../slices/account'
+import { TransferSlice } from '../slices/transfer'
 
 export const store = configureStore({
     reducer: {
         userDetails: UserDetailsSlice.reducer,
         modal: ModalSlice.reducer,
         backdrop: BackDropSlice.reducer,
+        transaction: TransactionSlice.reducer,
+        account: AccountSlice.reducer,
+        transfer: TransferSlice.reducer
     }
 })
 

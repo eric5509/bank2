@@ -18,6 +18,7 @@ export default function TransfersTable() {
           >
             <th className=" px-4 py-5 font-medium text-start flex items-center gap-3 text-base">
               Sender
+            
             </th>
             <th className="px-4 py-5 font-medium text-start ">Date</th>
             <th className="px-4 py-5 font-medium text-start ">

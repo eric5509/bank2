@@ -11,7 +11,7 @@ export default async function AccountsPage() {
   return (
     <Framer>
         <AccountTitle />
-        <UserTable accounts={results}/>
+        <UserTable results={results}/>
     </Framer>
   );
 }

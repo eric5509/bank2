@@ -3,8 +3,11 @@ import Title from "@/components/shared/Title";
 import Framer from "@/lib/Framer";
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import { TTransaction } from "@/redux/slices/transaction";
 
-export default function TransactionPage() {
+export default async function TransactionPage() {
+  const transaction = await fetch(`${process.env.ROOT_URL}`)
+  const results: TTransaction[] = transaction.data
   return (
     <Framer>
       <div>
@@ -16,7 +19,7 @@ export default function TransactionPage() {
             Add Transaction
           </Link>
         </div>
-        <TransactionTable one={false} />
+        <TransactionTable one={false} results={results}/>
       </div>
     </Framer>
   )
